@@ -16,8 +16,8 @@
   "models": {
     "_comment": "Public model renames. Clients list and call `id` (or `name`); the router calls `targets` (provider-alias/model) in order behind the scenes — when one is unavailable, the next answers — and reports `id` back in every response. hideTarget keeps the targets out of /v1/models and the dashboard catalog.",
     "renames": [
-      { "id": "gpt-6-astra", "name": "GPT-6 Astra", "targets": ["oc/big-pickle", "oc/deepseek-v4.1-flash-free", "oc/glm-5.3-flash-free", "oc/mimo-v2.6-flash-free", "oc/nemotron-3.5-super-vl-free", "oc/nemotron-3.5-lightning-free"], "hideTarget": true },
-      { "id": "claude-opus-5.5", "name": "Claude Opus 5.5", "targets": ["oc/big-pickle", "oc/deepseek-v4.1-flash-free", "oc/glm-5.3-flash-free", "oc/mimo-v2.6-flash-free", "oc/nemotron-3.5-super-vl-free", "oc/nemotron-3.5-lightning-free"], "hideTarget": true }
+      { "id": "gpt-6-astra", "name": "GPT-6 Astra", "targets": ["oc/big-pickle", "oc/deepseek-v4.1-flash-free", "oc/glm-5.3-flash-free", "oc/mimo-v2.6-flash-free", "oc/nemotron-3.5-super-vl-free", "oc/nemotron-3.5-lightning-free", "oc/pulse-alpha-free", "oc/crouton-alpha-free"], "hideTarget": true },
+      { "id": "claude-opus-5.5", "name": "Claude Opus 5.5", "targets": ["oc/big-pickle", "oc/deepseek-v4.1-flash-free", "oc/glm-5.3-flash-free", "oc/mimo-v2.6-flash-free", "oc/nemotron-3.5-super-vl-free", "oc/nemotron-3.5-lightning-free", "oc/pulse-alpha-free", "oc/crouton-alpha-free"], "hideTarget": true }
     ]
   },
 

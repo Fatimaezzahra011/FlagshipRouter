@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.3.1 — 2026-11-05
+
+### Changed
+- GPT-6 Astra and Claude Opus 5.5 also try OpenCode's new free models, Pulse Alpha and Crouton Alpha, after the existing six.
+
 ## 1.3.0 — 2026-10-25
 
 ### Changed
