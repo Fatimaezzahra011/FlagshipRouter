@@ -18,7 +18,7 @@ npm run launch
 
 `npm run launch` installs the dependencies, builds the app (a few minutes, first run only), and starts the CLI. The server runs on port `20128` and the dashboard opens in your browser; the terminal keeps a small menu (open browser UI, terminal UI, hide to tray, exit).
 
-The first launch also installs the [OpenCode](https://opencode.ai) CLI (by [SST](https://github.com/sst/opencode), MIT) quietly in the background if you don't have it. Skip that with `npm run launch -- --no-opencode`.
+`npm run launch` also installs the [OpenCode](https://opencode.ai) CLI (by [SST](https://github.com/sst/opencode), MIT) quietly in the background if you don't have it.
 
 Pass CLI options after `--`, for example `npm run launch -- --host 127.0.0.1` (local only), `-- -p 20130` (another port) or `-- --no-browser`.
 

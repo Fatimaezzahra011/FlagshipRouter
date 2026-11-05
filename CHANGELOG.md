@@ -3,7 +3,7 @@
 ## 1.4.1 — 2026-11-05
 
 ### Added
-- `npm run launch` installs the [OpenCode](https://opencode.ai) CLI quietly in the background on first run if it is missing, with no extra output. Skip with `--no-opencode`. Thanks to the OpenCode team (SST).
+- `npm run launch` installs the [OpenCode](https://opencode.ai) CLI quietly in the background whenever it is missing, with no extra output. Thanks to the OpenCode team (SST).
 
 ## 1.4.0 — 2026-11-05
 
