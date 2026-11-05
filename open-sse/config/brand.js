@@ -58,3 +58,15 @@ export const PROVIDER_POLICY = Object.freeze({
   exclude: Object.freeze([...(policy.exclude || [])]),
   customEndpoints: policy.customEndpoints === true,
 });
+
+// Local / custom providers (Ollama, LM Studio, any OpenAI-compatible endpoint) appended to every
+// rename's pool after its built-in targets. autoDetect lists servers registered automatically
+// when they are running; src/sse/services/localTargets.js does the work.
+const local = RAW.localProviders || {};
+export const LOCAL_PROVIDERS = Object.freeze({
+  enabled: local.enabled !== false,
+  autoDetect: Object.freeze((Array.isArray(local.autoDetect) ? local.autoDetect : [
+    { name: "Ollama", prefix: "local-ollama", baseUrl: "http://localhost:11434/v1" },
+    { name: "LM Studio", prefix: "local-lmstudio", baseUrl: "http://localhost:1234/v1" },
+  ]).filter((p) => p && p.prefix && p.baseUrl).map((p) => Object.freeze({ ...p }))),
+});

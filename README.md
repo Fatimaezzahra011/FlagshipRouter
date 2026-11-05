@@ -22,6 +22,14 @@ npm run launch
 
 Pass CLI options after `--`, for example `npm run launch -- --host 127.0.0.1` (local only), `-- -p 20130` (another port) or `-- --no-browser`.
 
+### Local models (no signup, no limits)
+
+When the free cloud models hit their limits, GPT-6 Astra and Claude Opus 5.5 fall back to a model running on your own machine.
+
+- **Ollama:** install it from [ollama.com](https://ollama.com), then run `ollama pull qwen3:8b` (or any model you like). FlagshipRouter detects it on `localhost:11434` automatically.
+- **LM Studio:** load a model and start its local server on port 1234. It is detected automatically too.
+- **Anything else** with an OpenAI- or Anthropic-compatible API (llama.cpp, vLLM, Jan, LocalAI, another machine on your network): add it under **Providers → Add custom endpoint** and pick its default model.
+
 To use the `flagshiprouter` command anywhere, link the CLI package once:
 
 ```bash

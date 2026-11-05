@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.5.0 — 2026-11-05
+
+### Added
+- Local and custom providers behind GPT-6 Astra and Claude Opus 5.5. Any OpenAI- or Anthropic-compatible endpoint you add in the dashboard (Ollama, LM Studio, llama.cpp, vLLM, Jan, LocalAI, …) answers after the built-in free models, so the two models keep working when the free cloud limits are reached.
+- Ollama (`localhost:11434`) and LM Studio (`localhost:1234`) are detected automatically and registered when they are running, so they need no setup. The first chat model they list is used.
+- The Providers page is enabled for adding custom endpoints (`brand.json` → `providers.customEndpoints`). `brand.json` → `localProviders` controls auto-detection.
+
 ## 1.4.1 — 2026-11-05
 
 ### Added

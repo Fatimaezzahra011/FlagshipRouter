@@ -28,6 +28,14 @@
     "includeHasFree": true,
     "include": [],
     "exclude": ["antigravity", "gemini", "gemini-cli"],
-    "customEndpoints": false
+    "customEndpoints": true
+  },
+  "localProviders": {
+    "_comment": "Any OpenAI/Anthropic-compatible endpoint added in the dashboard (Ollama, LM Studio, llama.cpp, vLLM, ...) becomes the last fallback behind every rename. Servers in autoDetect are registered automatically when they are running.",
+    "enabled": true,
+    "autoDetect": [
+      { "name": "Ollama", "prefix": "local-ollama", "baseUrl": "http://localhost:11434/v1" },
+      { "name": "LM Studio", "prefix": "local-lmstudio", "baseUrl": "http://localhost:1234/v1" }
+    ]
   }
 }

@@ -32,6 +32,7 @@ import { BRAND } from "open-sse/config/brand.js";
 import { getKeyAccessContext, enforceKeyAccess, filterAdapterModels } from "../services/keyAccess.js";
 import { resolveSmartChoice } from "../services/systemoneRouter.js";
 import { hasValidCliToken } from "@/dashboardGuard.js";
+import { getLocalTargets } from "../services/localTargets.js";
 
 /**
  * Handle chat completion request
@@ -200,8 +201,11 @@ export async function handleChat(request, clientRawRequest = null) {
  * unavailable — and the response is presented under the public name.
  */
 async function handleSingleModelChat(body, modelStr, clientRawRequest = null, request = null, apiKey = null, requestedModel = null) {
-  const rename = findModelRename(modelStr);
+  let rename = findModelRename(modelStr);
   if (!rename) return routeSingleModelChat(body, modelStr, clientRawRequest, request, apiKey, requestedModel);
+  // Connected local/custom providers (Ollama, LM Studio, …) answer after the built-in targets.
+  const localTargets = await getLocalTargets();
+  if (localTargets.length) rename = { ...rename, targets: [...rename.targets, ...localTargets] };
   const response = rename.targets.length > 1
     ? await handleComboChat({
       body,
