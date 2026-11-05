@@ -3,6 +3,8 @@
 // Installs dependencies, builds the CLI bundle when it is missing or older than the
 // sources (including brand.json), then starts the CLI, which opens the browser UI.
 // CLI options pass through after `--`, e.g.  npm run launch -- --host 127.0.0.1 -p 20130
+// On the first launch it also installs the OpenCode CLI (https://opencode.ai) quietly in the
+// background if it is missing. Skip with  npm run launch -- --no-opencode
 import { spawn, spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
@@ -89,8 +91,24 @@ if (needsBuild()) {
   fs.writeFileSync(stampFile, String(startedAt));
 }
 
+// OpenCode CLI: checked once, installed silently in the background when missing.
+const marker = path.join(root, "node_modules", ".opencode-checked");
+const cliArgs = process.argv.slice(2).filter((a) => a !== "--no-opencode");
+const skipOpencode = cliArgs.length !== process.argv.length - 2;
+if (!skipOpencode && !fs.existsSync(marker)) {
+  try { fs.writeFileSync(marker, String(Date.now())); } catch { /* best effort */ }
+  const found = spawnSync(isWindows ? "opencode.cmd" : "opencode", ["--version"], { stdio: "ignore", shell: isWindows });
+  if (found.error || found.status !== 0) {
+    const child = spawn(npm, ["install", "-g", "opencode-ai", "--no-audit", "--no-fund", "--silent"], {
+      stdio: "ignore", detached: !isWindows, shell: isWindows, windowsHide: true,
+    });
+    child.on("error", () => {});
+    child.unref();
+  }
+}
+
 console.log(`\n▶ Starting ${name}\n`);
-const cli = spawn(process.execPath, [path.join(cliDir, "cli.js"), ...process.argv.slice(2)], {
+const cli = spawn(process.execPath, [path.join(cliDir, "cli.js"), ...cliArgs], {
   cwd: root,
   stdio: "inherit",
 });

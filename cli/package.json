@@ -1,6 +1,6 @@
 {
   "name": "flagshiprouter",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "FlagshipRouter CLI - Start and manage the FlagshipRouter server",
   "bin": {
     "flagshiprouter": "./cli.js"
