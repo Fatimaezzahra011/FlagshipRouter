@@ -116,7 +116,7 @@ function hideUpstreamNames(text, rename, publicModel) {
 
 // Upstream limit errors name the upstream service and its paid plans; clients get this instead.
 function limitReachedBody(text, publicName) {
-  const message = `${publicName} has reached its free usage limit for now. Please try again later.`;
+  const message = `${publicName} has reached its free usage limit for now. Please try again later, or add a free OpenRouter key in the ${BRAND.name} dashboard.`;
   try {
     const payload = JSON.parse(text);
     if (payload?.error && typeof payload.error === "object") {

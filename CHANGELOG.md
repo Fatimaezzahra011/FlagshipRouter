@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.4.0 — 2026-11-05
+
+### Added
+- GPT-6 Astra and Claude Opus 5.5 fall through to OpenRouter's free models after the OpenCode ones: Nemotron 3 Ultra, Nemotron 3.5 Super, Gemma 4 31B, Cohere North Mini Code, then OpenRouter's own free router. Add a free OpenRouter key in the dashboard to use them.
+
+### Changed
+- The free-limit message mentions adding a free OpenRouter key.
+
 ## 1.3.1 — 2026-11-05
 
 ### Changed
